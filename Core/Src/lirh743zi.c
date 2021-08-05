@@ -52,3 +52,4 @@ void DWTinit(){
 	DWT->CYCCNT = 0U;
 	DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 }
+
