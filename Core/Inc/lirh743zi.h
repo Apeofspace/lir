@@ -14,4 +14,5 @@ volatile uint16_t count;
 
 void lirInit();
 void DWTinit();
-void lirCycle();
+void lirCycle(TIM_HandleTypeDef *htim, uint32_t IRQN);
+void lirPulse(TIM_HandleTypeDef *htim, GPIO_TypeDef* GPIO_Data, uint16_t GPIO_Data_Pin, GPIO_TypeDef* GPIO_Clck, uint16_t GPIO_Clck_Pin);

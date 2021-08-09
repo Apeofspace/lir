@@ -209,9 +209,9 @@ void TIM1_UP_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM1_UP_IRQn 0 */
 	TIM1->SR &= ~TIM_SR_UIF; //flag reset
-	lirCycle();
+	lirPulse(&htim1, DATA_GPIO_Port, 3, CLCK_GPIO_Port, 2);
   /* USER CODE END TIM1_UP_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim1);
+//  HAL_TIM_IRQHandler(&htim1);
   /* USER CODE BEGIN TIM1_UP_IRQn 1 */
 
   /* USER CODE END TIM1_UP_IRQn 1 */
@@ -229,8 +229,7 @@ void TIM2_IRQHandler(void)
   /* USER CODE BEGIN TIM2_IRQn 1 */
 //  TIM1->CCER|=TIM_CCER_CC1E; //map to pins (pin PE9)
 //  TIM1->BDTR|=TIM_BDTR_MOE; //main output enable
-  TIM1->CR1 |=  TIM_CR1_CEN;
-  TIM1->DIER|= TIM1_UP_IRQn;
+  lirCycle(&htim1, TIM1_UP_TIM10_IRQn);
 //  TIM1->DIER|= TIM1_CC_IRQn;
   /* USER CODE END TIM2_IRQn 1 */
 }
