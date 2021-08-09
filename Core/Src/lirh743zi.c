@@ -38,6 +38,7 @@ void lirPulse(TIM_HandleTypeDef *htim, GPIO_TypeDef* GPIO_Data, uint16_t GPIO_Da
 void lirCycle(TIM_HandleTypeDef *htim, uint32_t IRQN){
 	htim->Instance->CR1 |= TIM_CR1_CEN;
 	htim->Instance->DIER|= IRQN;
+	if (timestamp>0xFFFF0000) timestamp = 0; //чтобы избежать переполнения таймера
 }
 
 void lirInit(){
