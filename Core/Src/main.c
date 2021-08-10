@@ -101,11 +101,8 @@ int main(void)
 
 //  TIM1->CCER|=TIM_CCER_CC1E; //map to pins (pin PE9)
 //  TIM1->BDTR|=TIM_BDTR_MOE; //main output enable
-
-
   TIM2->CR1|= TIM_CR1_CEN;
   TIM2->DIER|= TIM2_IRQn;
-//  TIM1->DIER|= TIM1_CC_IRQn;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -247,7 +244,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 239;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 199;
+  htim2.Init.Period = 149;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
