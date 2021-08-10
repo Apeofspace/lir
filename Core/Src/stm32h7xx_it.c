@@ -225,7 +225,7 @@ void TIM2_IRQHandler(void)
   /* USER CODE BEGIN TIM2_IRQn 0 */
 	TIM2->SR &= ~TIM_SR_UIF; //flag reset
   /* USER CODE END TIM2_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim2);
+//  HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
 //  TIM1->CCER|=TIM_CCER_CC1E; //map to pins (pin PE9)
 //  TIM1->BDTR|=TIM_BDTR_MOE; //main output enable

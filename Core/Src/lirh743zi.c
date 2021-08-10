@@ -26,7 +26,7 @@ void lirPulse(TIM_HandleTypeDef *htim, GPIO_TypeDef* GPIO_Data, uint16_t GPIO_Da
 				tosend[0]|= ++count;
 //				таймстамп в микросекундах от начала работы программы
 				timestamp += DWTtoUS(tbuf);
-				tosend[1]= timestamp; //переменной этой хватит на час с чем-то, если хранить микросекунды
+				tosend[1]= timestamp;
 //				отправка
 				CDC_Transmit_FS((uint8_t*)tosend, 12);
 //				обнуление
@@ -38,7 +38,7 @@ void lirPulse(TIM_HandleTypeDef *htim, GPIO_TypeDef* GPIO_Data, uint16_t GPIO_Da
 void lirCycle(TIM_HandleTypeDef *htim, uint32_t IRQN){
 	htim->Instance->CR1 |= TIM_CR1_CEN;
 	htim->Instance->DIER|= IRQN;
-	if (timestamp>0xFFFF0000) timestamp = 0; //чтобы избежать переполнения таймера
+	if (timestamp>0xFFFF0000) timestamp = 0; //чтобы избежать переполнения таймстампа
 }
 
 void lirInit(){
